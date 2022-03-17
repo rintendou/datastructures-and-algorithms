@@ -2,8 +2,13 @@ package binarysearchtree;
 
 public class BstNode {
     private BstNode left;
+    private BstNode root;
     private BstNode right;
     private Object data;
+
+    public BstNode getRoot() {
+        return root;
+    }
 
     public BstNode getRight() {
         return right;
@@ -11,6 +16,10 @@ public class BstNode {
 
     public BstNode getLeft() {
         return left;
+    }
+
+    public Object getRootData() {
+        return root.data;
     }
     
     public Object getLeftData() {
