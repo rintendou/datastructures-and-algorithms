@@ -1,9 +1,16 @@
 package binarysearchtree;
 
 public class BinarySearchTree {
-    BstNode root = new BstNode();
+    Node root;
 
-    public BinarySearchTree() {
-        BinarySearchTree tree = new BinarySearchTree();
+    public BinarySearchTree(int data) {
+        root.setData(data);
+    }
+
+    public void insert(int val) {
+        Node temp = root;
+        while (temp != null) {
+
+        }
     }
 }
