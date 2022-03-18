@@ -1,40 +1,26 @@
 package binarysearchtree;
 
-public class BstNode {
-    private BstNode left;
-    private BstNode root;
-    private BstNode right;
-    private Object data;
+public class Node {
+    private Node left;
+    private Node right;
+    private int data;
 
-    public BstNode getRoot() {
+    public Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+
+    public int getData(Node node) {
+        return node.data;
+    }
+
+    public void setData(int data) {
+        this.data = data;
+    }
+
+    public Node getLeftChild(Node root) {
+        root = root.left;
         return root;
-    }
-
-    public BstNode getRight() {
-        return right;
-    }
-
-    public BstNode getLeft() {
-        return left;
-    }
-
-    public Object getRootData() {
-        return root.data;
-    }
-    
-    public Object getLeftData() {
-        return left.data;
-    }
-
-    public Object getRightData() {
-        return right.data;
-    }
-
-    public void setLeftData(Object data) {
-        left.data = data;
-    }
-
-    public void setRightData(Object data) {
-        right.data = data;
     }
 }
