@@ -18,6 +18,7 @@ public class BinarySearchTree {
 
     public int getMin() { 
         if (root == null) { // Check if tree exists. Edge case.
+            System.out.println("Tree is empty.");
             throw new NoSuchElementException();
         }
 
@@ -28,5 +29,30 @@ public class BinarySearchTree {
         return current.getData(current); // java:S2259 error being thrown here, no clue why.
     }
 
-    
+    public int getMax() {
+        if (root == null) {
+            System.out.println("Tree is empty.");
+            throw new NoSuchElementException();
+        }
+
+        Node current = root;
+        while (current != root) {
+            current = current.getRightChild(current);
+        }
+        return current.getData(current);
+    }
+
+    public int getHeight(Node node) {
+        if (node == null) return 0; // Either the tree is empty or we reached past the leaf node.
+        int left = getHeight(node.getLeftChild(node)); 
+        int right = getHeight(node.getRightChild(node));
+
+        int h; // Height of a node.
+        if (left > right) {
+            h = left + 1;
+        } else {
+            h = right + 1;
+        }
+        return h;
+    }
 }

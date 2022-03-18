@@ -23,4 +23,9 @@ public class Node {
         root = root.left;
         return root;
     }
+
+    public Node getRightChild(Node root) {
+        root = root.right;
+        return root;
+    }
 }
