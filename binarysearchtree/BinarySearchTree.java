@@ -57,8 +57,8 @@ public class BinarySearchTree {
     }
 
     public boolean isBinarySearchTree(Node root, int min, int max) {
-        if (root == null) return true;
-        if (root.getData(root) <= min || root.getData(root) > max) return false;
-        return isBinarySearchTree(root.getLeftChild(root), min, root.getData(root)) && isBinarySearchTree(root.getRightChild(root), root.getData(root), max);
+        if (root == null) return true; // Return true once we reach the end of a leaf. Will begin popping nodes off stack and return a truth value.
+        if (root.getData(root) <= min || root.getData(root) > max) return false; // We set limits, min & max. If our root is less than our min, then we know that the node we are looking at should be in the left subtree, meaning it is not a BST. If our root is greater than our max, then we know that the node we are looking at should be in the right subtree, meaning that it is not a BST.
+        return isBinarySearchTree(root.getLeftChild(root), min, root.getData(root)) && isBinarySearchTree(root.getRightChild(root), root.getData(root), max); // Recursive call, getting both left and right children
     }
 }
