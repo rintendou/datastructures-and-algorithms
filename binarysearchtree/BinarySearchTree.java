@@ -55,4 +55,10 @@ public class BinarySearchTree {
         }
         return h;
     }
+
+    public boolean isBinarySearchTree(Node root, int min, int max) {
+        if (root == null) return true;
+        if (root.getData(root) <= min || root.getData(root) > max) return false;
+        return isBinarySearchTree(root.getLeftChild(root), min, root.getData(root)) && isBinarySearchTree(root.getRightChild(root), root.getData(root), max);
+    }
 }
