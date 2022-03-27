@@ -28,4 +28,13 @@ public class Node {
         root = root.right;
         return root;
     }
+
+    public void setLeftChild(Node node, int data) {
+        node.left = new Node(data);
+    }
+
+    public void setRightChild(Node node, int data) {
+        node.right = new Node(data);
+    }
+
 }
