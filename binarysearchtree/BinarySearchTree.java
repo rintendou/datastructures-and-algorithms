@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 
 public class BinarySearchTree { // No dupes allowed.
     private Node root;
+    private int count;
 
     public BinarySearchTree(int data) {
         root.setData(data);
@@ -27,16 +28,28 @@ public class BinarySearchTree { // No dupes allowed.
             if (root.left == null && root.right == null) { // Case 1: Node containing data we want to delete has no children.
                 root = null;
                 return root;
-            } else if (root.left == null) { // Case 2: Node containing data has a single child.
+            } else if (root.left == null) { // Case 2: Node containing data has a single child. Right child.
                 Node temp = root;
-                root = root.right;
-                temp = root;
-                root
-            } else if (root.right == null) { 
-                root = getMax(root);
+                temp = temp.right;
+                root = temp;
+                temp = null;
+            } else if (root.right == null) { // Case 2: Left Child.
+                Node temp = root;
+                temp = temp.left;
+                root = temp;
+                temp = null;
+            } else { // Case 3: Node containing data has two children.
+                Node temp = getMin(root.right);
+                root.data = temp.data;
+                root.right = delete(root.right, temp.data);
             }
         }
+        count--;
         return root;
+    }
+
+    public int getNodeCount() {
+        return count;
     }
 
     public Node getMin(Node root) { 
@@ -53,7 +66,7 @@ public class BinarySearchTree { // No dupes allowed.
         while (current != null) { // Exclusively looping through left branch of tree.
             current = current.left;
         }
-        return current; // java:S2259 error being thrown here, no clue why.
+        return current; // Fixed error.
     }
 
     public Node getMax(Node root) {

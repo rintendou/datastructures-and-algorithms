@@ -1,15 +1,17 @@
 package binarysearchtree;
 
 public class Node {
-    private Node left;
-    private Node right;
-    private int data;
+    Node left;
+    Node right;
+    int data;
 
     public Node(int data) {
         this.data = data;
         left = null;
         right = null;
     }
+
+    // Useless methods after making variables public. Using getters and setters was messing with my head too much.
 
     public int getData(Node node) {
         return node.data;
@@ -36,5 +38,4 @@ public class Node {
     public void setRightChild(Node node, int data) {
         node.right = new Node(data);
     }
-
 }
