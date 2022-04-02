@@ -10,14 +10,31 @@ public class BinarySearchTree { // No dupes allowed.
         root.setData(data);
     }
 
-   /*  public void insert(int val) {
+    public void insert(int data) {
         Node current = root;
-        while (current != null) {
-            
-        }
-    } */
+        Node prev = root;
 
-    public Node delete(Node root, int data) {
+        if (root == null) { // If tree is empty
+            root = new Node(data);
+            return;
+        }
+
+        while (current != null) { // Traversal loop
+            if (data < current.data) { // Go to left side of tree
+                prev = current;
+                current = current.left;
+            } else if (data > current.data) { // Go to right side of tree
+                prev = current;
+                current = current.right;
+            }
+        }
+
+        if (data < prev.data) prev.left = new Node(data); // Actual insertion at the end of the left tree.
+        else if (data > prev.data) prev.right = new Node(data); // Actual insertion at the end of the right tree.
+        count++;
+    } 
+
+    public Node delete(Node root, int data) { // Recursive method.
         if (root == null) return null; // If tree is empty, return itself (null)
 
         if (data < root.data) { // Going down the entire left side of tree, until condition is met.
@@ -58,7 +75,7 @@ public class BinarySearchTree { // No dupes allowed.
             throw new NoSuchElementException();
         }
 
-        if (root.left == null & root.right == null) {
+        if (root.left == null && root.right == null) {
             return root;
         }
 
@@ -75,7 +92,7 @@ public class BinarySearchTree { // No dupes allowed.
             throw new NoSuchElementException();
         }
 
-        if (root.left == null & root.right == null) {
+        if (root.left == null && root.right == null) {
             return root;
         }
 
@@ -104,5 +121,30 @@ public class BinarySearchTree { // No dupes allowed.
         if (root == null) return true; // Return true once we reach the end of a leaf. Will begin popping nodes off stack and return a truth value.
         if (root.data <= min || root.data > max) return false; // We set limits, min & max. If our root is less than our min, then we know that the node we are looking at should be in the left subtree, meaning it is not a BST. If our root is greater than our max, then we know that the node we are looking at should be in the right subtree, meaning that it is not a BST.
         return isBinarySearchTree(root.left, min, root.data) && isBinarySearchTree(root.right, root.data, max); // Recursive call, getting both left and right children
+    }
+
+    public int[] printValues(Node root) {
+        int[] arr  = new int[count];
+
+        Node current = root;
+
+        if (root == null) {
+            
+        }
+    }
+
+    public boolean isInTree(int data) {
+        Node current = root;
+
+        while (current.data != data) {
+            if (data < current.data) {
+                current = current.left;
+            } else if (data > current.data) {
+                current = current.right;
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
 }
