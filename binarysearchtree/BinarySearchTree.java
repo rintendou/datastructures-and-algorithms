@@ -11,6 +11,10 @@ public class BinarySearchTree { // No dupes allowed.
     }
 
     public void insert(int data) {
+        if (data < 0) {
+            System.out.println("Positive numbers only.");
+            return;
+        }
         Node current = root;
         Node prev = root;
 
@@ -143,5 +147,27 @@ public class BinarySearchTree { // No dupes allowed.
             }
         }
         return false;
+    }
+
+    public void deleteTree() {
+        root = null; // This solution does not working is lower-level languages since they do not have an automatic garbage collector
+    }
+
+    public int getSuccessor(int data) {
+        Node current = root; // Creating temp pointer
+
+        while (current.data != data) { // Locating node containing data, referring to it as "data node"
+            if (data < current.data) {
+                current = current.left;
+            } else if (data > current.data) {
+                current = current.right;
+            } else {
+                if (current.right == null) return current.data; // If "data node" has no right children, then just return "data node".
+                else {
+                    return current.right.data;
+                }
+            }
+        }
+        return -1; // Not found
     }
 }
