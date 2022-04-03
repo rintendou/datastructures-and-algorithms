@@ -123,14 +123,11 @@ public class BinarySearchTree { // No dupes allowed.
         return isBinarySearchTree(root.left, min, root.data) && isBinarySearchTree(root.right, root.data, max); // Recursive call, getting both left and right children
     }
 
-    public int[] printValues(Node root) {
-        int[] arr  = new int[count];
-
-        Node current = root;
-
-        if (root == null) {
-            
-        }
+    public void printValues(Node root) {
+        if (root == null) return;
+        printValues(root.left);
+        System.out.println(root.data + " ");
+        printValues(root.right);
     }
 
     public boolean isInTree(int data) {
