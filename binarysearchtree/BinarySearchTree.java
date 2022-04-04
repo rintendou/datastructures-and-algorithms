@@ -8,6 +8,7 @@ public class BinarySearchTree { // No dupes allowed.
 
     public BinarySearchTree(Node root) {
         this.root = root;
+        count = 1;
     }
 
     public void insert(int data) {
@@ -40,7 +41,7 @@ public class BinarySearchTree { // No dupes allowed.
 
     public Node delete(Node root, int data) { // Recursive method.
         if (root == null) return null; // If tree is empty, return itself (null)
-
+        boolean lookingForReplacement = true;
         if (data < root.data) { // Going down the entire left side of tree, until condition is met.
             root.left = delete(root.left, data);
         } else if (data > root.data) { // Going down the entire right side of tree, until condition is met.
@@ -48,7 +49,6 @@ public class BinarySearchTree { // No dupes allowed.
         } else {
             if (root.left == null && root.right == null) { // Case 1: Node containing data we want to delete has no children.
                 root = null;
-                count--;
                 return root;
             } else if (root.left == null) { // Case 2: Node containing data has a single child, Right child.
                 Node temp = root;
@@ -61,10 +61,14 @@ public class BinarySearchTree { // No dupes allowed.
                 root = temp;
                 temp = null;
             } else { // Case 3: Node containing data has two children.
-                Node temp = getMin(root.right);
+                Node temp = new Node(getMin(root.right));
                 root.data = temp.data;
                 root.right = delete(root.right, temp.data);
             }
+        }
+        if(lookingForReplacement){
+            lookingForReplacement = false;
+            return root;
         }
         count--;
         return root;
@@ -74,38 +78,40 @@ public class BinarySearchTree { // No dupes allowed.
         return count;
     }
 
-    public Node getMin(Node root) { 
+    public int getMin(Node root) { 
         if (root == null) { // Check if tree exists. Edge case.
             System.out.println("Tree is empty.");
             throw new NoSuchElementException();
         }
 
         if (root.left == null && root.right == null) {
-            return root;
+            return root.data;
         }
 
         Node current = root; // Temp pointer.
         while (current != null) { // Exclusively looping through left branch of tree.
+            if (current.left == null) break;
             current = current.left;
         }
-        return current; // Fixed error.
+        return current.data; // Fixed error.
     }
 
-    public Node getMax(Node root) {
+    public int getMax(Node root) {
         if (root == null) {
             System.out.println("Tree is empty.");
             throw new NoSuchElementException();
         }
 
         if (root.left == null && root.right == null) {
-            return root;
+            return root.data;
         }
 
         Node current = root;
-        while (current != null) {
+        while (current != null) { // Breaks when current == null, so it will never work properly. Added break statement.
+            if(current.right == null) break;
             current = current.right;
         }
-        return current;
+        return current.data;
     }
 
     public int getHeight(Node node) {
@@ -139,7 +145,7 @@ public class BinarySearchTree { // No dupes allowed.
     public boolean isInTree(int data) {
         Node current = root; // temp pointer
 
-        while (current.data != data) {
+        while (current != null) {
             if (data < current.data) {
                 current = current.left;
             } else if (data > current.data) {
@@ -152,10 +158,10 @@ public class BinarySearchTree { // No dupes allowed.
     }
 
     public void deleteTree() {
-        root = null; // This solution does not working is lower-level languages since they do not have an automatic garbage collector
+       this.root = null; // This solution does not working is lower-level languages since they do not have an automatic garbage collector
     }
 
-    public int getSuccessor(int data) {
+    public int getSuccessor(int data) { // Go to right tree, left most element.
         Node current = root; // Creating temp pointer
 
         while (current.data != data) { // Locating node containing data, referring to it as "data node"
