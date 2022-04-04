@@ -48,8 +48,9 @@ public class BinarySearchTree { // No dupes allowed.
         } else {
             if (root.left == null && root.right == null) { // Case 1: Node containing data we want to delete has no children.
                 root = null;
+                count--;
                 return root;
-            } else if (root.left == null) { // Case 2: Node containing data has a single child. Right child.
+            } else if (root.left == null) { // Case 2: Node containing data has a single child, Right child.
                 Node temp = root;
                 temp = temp.right;
                 root = temp;
@@ -128,14 +129,15 @@ public class BinarySearchTree { // No dupes allowed.
     }
 
     public void printValues(Node root) {
-        if (root == null) return;
-        printValues(root.left);
-        System.out.println(root.data + " ");
-        printValues(root.right);
+        Node current = root; // temp pointer
+        if (current == null) return;
+        printValues(current.left);
+        System.out.println(current.data + " ");
+        printValues(current.right);
     }
 
     public boolean isInTree(int data) {
-        Node current = root;
+        Node current = root; // temp pointer
 
         while (current.data != data) {
             if (data < current.data) {
@@ -168,6 +170,6 @@ public class BinarySearchTree { // No dupes allowed.
                 }
             }
         }
-        return -1; // Not found
+        return -1; // Not found.
     }
 }
