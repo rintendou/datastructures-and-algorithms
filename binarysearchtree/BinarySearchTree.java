@@ -6,8 +6,8 @@ public class BinarySearchTree { // No dupes allowed.
     private Node root;
     private int count;
 
-    public BinarySearchTree(int data) {
-        root.setData(data);
+    public BinarySearchTree(Node root) {
+        this.root = root;
     }
 
     public void insert(int data) {
