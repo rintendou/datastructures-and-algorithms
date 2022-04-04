@@ -16,27 +16,27 @@ public class BinarySearchTreeTester {
         tree.printValues(root);
 
         System.out.println("---------" + '\n' + "Returning # of nodes in tree: ");
-        System.out.println(tree.getNodeCount()); // Not printing the correct thing, debugging.
+        System.out.println(tree.getNodeCount());
 
         System.out.println("---------");
         tree.delete(root, 30);
         System.out.println("Removing node containing value 30: ");
         tree.printValues(root);
 
+        System.out.println("---------" + '\n' + "Returning # of nodes in tree: ");
+        System.out.println(tree.getNodeCount()); 
+
         System.out.println("---------" + '\n' + "Is the tree a BST?: ");
         System.out.println(tree.isBinarySearchTree(root, 0, Integer.MAX_VALUE));
         
         System.out.println("---------" + '\n' + "Max value in the tree: ");
-        System.out.println(tree.getMax(root)); // Not printing the correct thing, debugging.
+        System.out.println(tree.getMax(root));
 
         System.out.println("---------" + '\n' + "Minimum value in the tree: ");
-        System.out.println(tree.getMin(root)); // Not printing the correct thing, debugging.
+        System.out.println(tree.getMin(root));
 
         System.out.println("---------" + '\n' + "Is a value in the BST?: ");
         System.out.println(tree.isInTree(5)); // Not printing the correct thing, debugging.
-
-        System.out.println("---------" + '\n' + "Returning # of nodes in tree: ");
-        System.out.println(tree.getNodeCount()); // Not printing the correct thing, debugging.
 
         System.out.println("---------" + '\n' + "Successor of node 'x': ");
         System.out.println(tree.getSuccessor(5)); // Not printing the correct thing, debugging.
