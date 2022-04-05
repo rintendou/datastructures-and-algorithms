@@ -42,7 +42,7 @@ public class BinarySearchTreeTester {
         System.out.println(tree.getSuccessor(5));
 
         System.out.println("---------" + '\n' + "Deleting tree: ");
-        tree.deleteTree(); // Does not work.
-        tree.printValues(root);
+        tree.deleteTree(tree); 
+        tree.printValues(tree.root);
     }
 }
