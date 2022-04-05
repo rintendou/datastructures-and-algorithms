@@ -39,7 +39,7 @@ public class BinarySearchTreeTester {
         System.out.println(tree.isInTree(5)); // Not printing the correct thing, debugging.
 
         System.out.println("---------" + '\n' + "Successor of node 'x': ");
-        System.out.println(tree.getSuccessor(5)); // Not printing the correct thing, debugging.
+        System.out.println(tree.getSuccessor(5));
 
         System.out.println("---------" + '\n' + "Deleting tree: ");
         tree.deleteTree(); // Does not work.
