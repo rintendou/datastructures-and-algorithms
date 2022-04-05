@@ -3,8 +3,8 @@ package binarysearchtree;
 import java.util.NoSuchElementException;
 
 public class BinarySearchTree { // No dupes allowed.
-    private Node root;
-    private int count;
+    Node root; // Had to remove access modifiers to resolve issue in BinarySearchTreeTester.java's deleteTree() method not working.
+    int count;
 
     public BinarySearchTree(Node root) {
         this.root = root;
@@ -156,8 +156,8 @@ public class BinarySearchTree { // No dupes allowed.
         return false;
     }
 
-    public void deleteTree() {
-       this.root = null; // This solution does not working is lower-level languages since they do not have an automatic garbage collector
+    public void deleteTree(BinarySearchTree tree) {
+       tree.root = null; // This solution does not working is lower-level languages since they do not have an automatic garbage collector
     }
 
     public int getSuccessor(int data) { // Go to right tree, left most element.
