@@ -49,24 +49,27 @@ public class BinarySearchTree { // No dupes allowed.
         } else {
             if (root.left == null && root.right == null) { // Case 1: Node containing data we want to delete has no children.
                 root = null;
+                count--;
                 return root;
             } else if (root.left == null) { // Case 2: Node containing data has a single child, Right child.
                 Node temp = root;
                 temp = temp.right;
                 root = temp;
                 temp = null;
+                count--;
             } else if (root.right == null) { // Case 2: Left Child.
                 Node temp = root;
                 temp = temp.left;
                 root = temp;
                 temp = null;
+                count--;
             } else { // Case 3: Node containing data has two children.
                 Node temp = new Node(getMin(root.right));
                 root.data = temp.data;
+                count--;
                 root.right = delete(root.right, temp.data);
             }
         }
-        count--;
         return root;
     }
 
