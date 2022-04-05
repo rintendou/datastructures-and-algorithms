@@ -41,7 +41,7 @@ public class BinarySearchTree { // No dupes allowed.
 
     public Node delete(Node root, int data) { // Recursive method.
         if (root == null) return null; // If tree is empty, return itself (null)
-        boolean lookingForReplacement = true;
+
         if (data < root.data) { // Going down the entire left side of tree, until condition is met.
             root.left = delete(root.left, data);
         } else if (data > root.data) { // Going down the entire right side of tree, until condition is met.
@@ -65,10 +65,6 @@ public class BinarySearchTree { // No dupes allowed.
                 root.data = temp.data;
                 root.right = delete(root.right, temp.data);
             }
-        }
-        if(lookingForReplacement){
-            lookingForReplacement = false;
-            return root;
         }
         count--;
         return root;
