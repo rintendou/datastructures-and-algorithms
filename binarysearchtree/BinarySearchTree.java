@@ -169,13 +169,16 @@ public class BinarySearchTree { // No dupes allowed.
                 current = current.left;
             } else if (data > current.data) {
                 current = current.right;
-            } else {
-                if (current.right == null) return current.data; // If "data node" has no right children, then just return "data node".
-                else {
-                    return current.right.data;
-                }
             }
         }
-        return -1; // Not found.
+
+        if (current.right == null) return -1;
+        else {
+            current = current.right;
+            while (current.left != null) {
+                current = current.left;
+            }
+            return current.data;
+        }
     }
 }
