@@ -24,7 +24,7 @@ public class BinarySearchTreeTester {
         tree.printValues(root);
 
         System.out.println("---------" + '\n' + "Returning # of nodes in tree: ");
-        System.out.println(tree.getNodeCount()); 
+        System.out.println(tree.getNodeCount()); // Not working, count-- is being called twice.
 
         System.out.println("---------" + '\n' + "Is the tree a BST?: ");
         System.out.println(tree.isBinarySearchTree(root, 0, Integer.MAX_VALUE));
