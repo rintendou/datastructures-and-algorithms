@@ -36,7 +36,7 @@ public class BinarySearchTreeTester {
         System.out.println(tree.getMin(root));
 
         System.out.println("---------" + '\n' + "Is a value in the BST?: ");
-        System.out.println(tree.isInTree(5)); // Not printing the correct thing, debugging.
+        System.out.println(tree.isInTree(5));
 
         System.out.println("---------" + '\n' + "Successor of node 'x': ");
         System.out.println(tree.getSuccessor(5));
